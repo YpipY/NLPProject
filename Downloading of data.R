@@ -208,14 +208,13 @@ sentence = unitNames$sentence > 0
 sentencepoints = set$points.rotated[sentence,]
 plot = ena.plot.group(plot, sentencepoints, labels = "1",
                       colors = "red", confidence.interval = "box")
-sentencemean = colMeans(first.game.lineweights)
-plot = ena.plot.network(plot, network = sentencemean)
+sentencelineweights = set$line.weights[sentence,]
+sentencelineweightsmean = colMeans(sentencelineweights)
+plot = ena.plot.network(plot, network = sentencelineweightsmean)
 print(plot)
 
-
-correlations= ena.correlations(set, dims = c(1:2))
-
 ### Simple statical messures
+## Not very comprehensive
 # Loading the data
 listData = list.files(paste(getwd(),'/centroids',sep=''))
 centroids = lapply(paste('centroids/',listData,sep=''), read.csv)
@@ -224,7 +223,6 @@ centroids = rbind.fill(centroids)
 # Making the folds
 predictors<- rep(NA, nrow(centroids))
 
-levels(centroids$genre)
 centroidsP = centroids
 levels(centroidsP$genre) <- c("Other", "Philosophy", "Other", "Other")
 

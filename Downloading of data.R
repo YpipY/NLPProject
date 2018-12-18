@@ -249,7 +249,7 @@ rocCurve <- roc(response = centroidsP$genre, predictor= predictors)
 auc(rocCurve)
 ci(rocCurve)
 plot(rocCurve, legacy.axes=TRUE)
-?pROC
+
 median(predictors)
 
 optimal.cutpoint.CB <- optimal.cutpoints(X = elas ~ status, tag.healthy = 0,
